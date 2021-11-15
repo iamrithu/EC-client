@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import React from "react";
+import { HashRouter, Route, Routes } from 'react-router-dom';
+import Home from "./dashboard/home";
+import Navbar from "./dashboard/navbar";
+import Admin from "./admin/adminLogin";
+import User from "./user/userLogin";
+import Register from "./user/userRegister";
+import Table from "./user/userList";
+
+
+
+
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HashRouter>
+      <div>
+        <Navbar />
+      </div>
+      <Routes>
+        <Route exact path="" element={<Home />} />
+        <Route exact path="/admin" element={<Admin />} />
+        <Route exact path="/user" element={<User />} />
+        <Route exact path="/register" element={<Register />} />
+        <Route exact path="/user-list" element={<Table />} />
+        
+       
+      </Routes>
+    </HashRouter>
   );
 }
 
