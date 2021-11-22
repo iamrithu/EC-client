@@ -9,6 +9,7 @@ export default function User() {
     const [Password, pickPassword] = useState('');
     const [msg,pickMsg]=useState("");
     const [Cmsg,CpickMsg]=useState("");
+    const[id,pickId]=useState("");
 
 
     const login = () => {
@@ -27,9 +28,10 @@ export default function User() {
                             localStorage.setItem('userEmail',mail);
                             localStorage.setItem('userPassword',Password);
                             pickMsg("Success:Please wait  for redirecting....")
-            
+
                             window.location.reload();
                             window.location.href="http://localhost:3000/"
+                            pickId(info._id);
                            
                            
                         }else{
@@ -69,10 +71,11 @@ export default function User() {
                                 className="form-control"
                                 placeholder="Enter your email id"
                                 onChange={obj => pickMail(obj.target.value)}
-                                value={mail}></input>
+                                value={mail}
+                                required></input>
                             <label className="mt-2 mb-2 text-dark" >Password</label>
                             <input
-                                type="email"
+                                type="password"
                                 className="form-control"
                                 placeholder="Enter your Password"
                                 onChange={obj => pickPassword(obj.target.value)}

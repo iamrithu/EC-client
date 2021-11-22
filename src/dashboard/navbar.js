@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
     const logOut=()=>{
+        
         localStorage.clear();
        
         window.location.reload();
@@ -14,16 +15,19 @@ const Navbar = () => {
     if(localStorage.getItem("email")!==null){
         var nav=<>
                  <Link id="link" to="/user-list"> <li>User-List</li></Link>
-                 <Link id="link" to="/task"> <li>Task</li></Link>
+                 <Link id="link" to="/task"> <li>Available Task</li></Link>
                  <Link id="link" to="/complete-task"> <li>Completed-task</li></Link>
-                 <Link id="link" to="/user"> <li onClick={logOut}>Log-Out</li></Link>
+                 <Link id="link" className="link" to="/user"> <li onClick={logOut} > <span className="text-warning">Admin</span> Log-Out</li></Link>
                 </>
     }else if(localStorage.getItem("userEmail")!==null){
+
+        var x = localStorage.getItem("userEmail")
         var nav=<>
         <Link id="link" to="/user-details"> <li>User-Detail</li></Link>
-        <Link id="link" to="/New-task"> <li>New-Task</li></Link>
+        <Link id="link" to="/usertask"> <li>Tasks</li></Link>
+        <Link id="link" to="/mytask"> <li>My-Tasks</li></Link>
         <Link id="link" to="/complete-tasks"> <li>Completed-Task</li></Link>
-        <Link id="link" to="/logout"> <li onClick={logOut}>Log-Out</li></Link>
+        <Link id="link"  className="link" to="/logout"> <li onClick={logOut}>Log-Out  </li> </Link><span  id="link"className=" mt-2 text-warning">{ x } </span> 
        </>
 
     }

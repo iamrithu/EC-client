@@ -23,6 +23,7 @@ const Table = () => {
     
     useEffect(() => {
         getAll();
+       
     }, true)
 
     return (
@@ -43,6 +44,7 @@ const Table = () => {
                             <th>User-Name</th>
                             <th>Mobile.no  </th>
                             <th>Email</th>
+                           
 
                             <th>Add</th>
                            
@@ -67,7 +69,8 @@ const Table = () => {
                                         <td>
                                             {e.eMail} 
                                         </td>
-                                        <td><button className="btn btn-success" >Add</button></td>
+                                        
+                                        <td><Link to={`/add/${e._id}`}><button className="btn btn-success" >Add</button></Link></td>
                                         <td><button className="btn btn-danger" >Remove</button></td>
                                     </tr>
                                 )
@@ -76,6 +79,9 @@ const Table = () => {
 
                     </tbody>
                 </table>
+                <div>
+                    
+                </div>
             </div>
         </div>
     )
