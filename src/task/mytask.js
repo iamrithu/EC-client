@@ -39,19 +39,34 @@ const Mytask = () => {
     const send = (i)=>{
 
         var data={
-            "CtaskNAme":i.storetask,
-            "Cdescription":i.sdescription,
-            "Cduration":i.sduration
+            "CtaskName":i.storetask,
+            "Cdescription": i.sdescription,
+            "Cduration": i.sduration 
             
         }
+        
         axios.post("http://localhost:4000/product/Ctask",data)
 
             .then(res => {
-                Process(res.data)
+                
 
             });
-    }
+            axios.delete("http://localhost:4000/product/store/"+i._id)
 
+            .then(res => {
+                
+            });
+    }
+const del = (i)=>{
+    axios.delete("http://localhost:4000/product/store/"+i)
+    .then(res=>{
+
+    })
+    getAll();
+ 
+    
+
+}
    
     
    useEffect(() => {
@@ -79,7 +94,7 @@ const Mytask = () => {
                                       <h6 className="text-primary">Duration : <span className="text-danger" >{e.sduration }</span></h6>
                                       <div className="row mt-5">
                                           <div className="col-lg-6 text-end">
-                                              <button className="btn alert-danger">Remove</button>
+                                              <button className="btn alert-danger"  onClick={del.bind(this,e._id)}>Remove</button>
                                           </div>
                                           <div className="col-lg-6">
                                           <button className="btn alert-warning text-dark text-start" onClick={send.bind(this,e)}>Completed</button>

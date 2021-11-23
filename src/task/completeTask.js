@@ -19,6 +19,15 @@ const CompleteTask = () => {
             })
 
     }
+    const del =(e)=>{
+        axios.delete("http://localhost:4000/product/Ctask/"+e._id)
+
+        .then(res => {
+           
+
+        })
+        getAll();
+    }
 
     
     useEffect(() => {
@@ -28,7 +37,9 @@ const CompleteTask = () => {
     return (
         <div className="container ">
             
-           
+           <div className="row text-center">
+               <h4 className="text-primary">{empList.length}</h4>
+           </div>
             <div className="row">
                 
                     
@@ -41,7 +52,7 @@ const CompleteTask = () => {
                                       <h6 className="text-primary">Description :-</h6>
                                       <p className="text-secondary">{e.Cdescription}</p>
                                       <h6 className="text-primary">Duration : <span className="text-danger">{e.Cduration }</span></h6>
-                                       
+                                       <button className="btn btn-danger m-4" onClick={del.bind(this,e)}>Delete</button>
                                     </div>
                                 )
                             })
