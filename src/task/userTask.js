@@ -11,10 +11,6 @@ const UserTask = () => {
     const [message, msgprocess] = useState("");
     const [Data, Process] = useState([]);
 
-    const[task,pickTask]=useState("");
-    const[desc,pickDesc]=useState("");
-
-    const[dura,pickDure]=useState("");
 
 
     const getAll = () => {
@@ -33,39 +29,29 @@ const UserTask = () => {
 
     }
 
-    const add = (i)=>{
-        var data={
-            "_id": Data._id,
-            "fullName": Data.fullName,
-            "mobileNumber": Data.mobileNumber,
-            "eMail":Data.eMail,
-            "password":Data.password,
-            "task": [{
-                "taskName":i.taskName,
-                "description":i.description,
-                "duration":i.duration
-            }],
-        }
-        axios.put("http://localhost:4000/product/user/"+data)
-        .then(res=>{
+    const save=(i)=>{
+        let data = {
            
-        })    
-         }
-    
-
-
-    
-       
-
+                 
+        "storetask":i.taskName,
+        "ID":Data._id,
+        "sdescription":i.description,
+        "sduration":i.duration
+            
+        }
+        axios.post("http://localhost:4000/product/store/",data)
+        .then(res=>{
+          
         
-       
-   
+        })
+        axios.delete("http://localhost:4000/product/task/"+i._id)
+        .then(res=>{
+ 
+        })
+        getAll();
+     }
     
-
-
-
-    
-    useEffect(() => {
+   useEffect(() => {
         getAll();
     }, true)
 
@@ -73,19 +59,20 @@ const UserTask = () => {
         <div className="container ">
             
            
-            <div className="row">
-                
+            <div className="row text-center">
+                 <h4 className="text-danger">Available Task : {empList.length}</h4>
                     
                         {
                             empList.map((e, index) => {
                                 return (
-                                    <div className="col-lg-4 p-3  border " key={index}>
+                                    <div className="col-lg-4 p-3  border  alert-success" key={index}>
+                                        <p>{message}</p>
                                         
-                                      <h6 className="text-primary" >TaskName : <span className="text-success" onChange={obj=>pickTask(obj.target.value)}> {e.taskName }</span></h6>
+                                      <h6 className="text-primary" >TaskName : <span className="text-success"> {e.taskName }</span></h6>
                                       <h6 className="text-primary">Description :-</h6>
-                                      <p className="text-secondary" onChange={obj=>pickDesc(obj.target.value)}>{e.description}</p>
-                                      <h6 className="text-primary">Duration : <span className="text-danger" onChange={obj=>pickDure(obj.target.value)}>{e.duration }</span></h6>
-                                       <button className="btn btn-success" onClick={add.bind(this,e)}>Add</button>
+                                      <p className="text-secondary" >{e.description}</p>
+                                      <h6 className="text-primary">Duration : <span className="text-danger" >{e.duration }</span></h6>
+                                       <button className="btn btn-success" onClick={save.bind(this,e)}>Add</button>
                                     </div>
                                 )
                             })

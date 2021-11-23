@@ -64,7 +64,7 @@ export default function User() {
                                 <div className="col-lg-6 text-end"><Link id="link" className='text-danger' to="/register">New-User</Link><i className=" fa  fa-angles-right"></i></div>
                             </div>
                         </div>
-                        <div className="card-body">
+                        <div className="card-body m-4 p-4 alert-info ">
                             <label className="mt-2 mb-2 text-dark" >E-mail</label>
                             <input
                                 type="email"

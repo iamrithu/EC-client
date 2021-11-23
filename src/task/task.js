@@ -1,5 +1,6 @@
 import React,{useState} from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export default function Task() {
 
@@ -67,7 +68,7 @@ export default function Task() {
 
                             
                         <div className="card-footer  text-center ">
-                            <button className="btn btn-success text-center" onClick={save} >Post</button>
+                            <button className="btn btn-success text-center form-control" onClick={save} ><Link to="/task">Post</Link></button>
                         </div>
                     </div>
                 </div>

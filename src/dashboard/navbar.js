@@ -26,7 +26,6 @@ const Navbar = () => {
         <Link id="link" to="/user-details"> <li>User-Detail</li></Link>
         <Link id="link" to="/usertask"> <li>Tasks</li></Link>
         <Link id="link" to="/mytask"> <li>My-Tasks</li></Link>
-        <Link id="link" to="/complete-tasks"> <li>Completed-Task</li></Link>
         <Link id="link"  className="link" to="/logout"> <li onClick={logOut}>Log-Out  </li> </Link><span  id="link"className=" mt-2 text-warning">{ x } </span> 
        </>
 

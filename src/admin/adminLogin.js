@@ -46,7 +46,7 @@ export default function Admin() {
         <div className="container">
             <div className="row">
                 <div className="col-lg-4"></div>
-                <div className="col-lg-4">
+                <div className="col-lg-4 m-4 p-4 alert-info">
                     <p className ="text-center text-danger">{msg}</p>
                     <p className ="text-center text-success">{Cmsg}</p>
                     <div className="card">

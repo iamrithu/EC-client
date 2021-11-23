@@ -20,6 +20,14 @@ const Table = () => {
 
     }
 
+    const del=(i)=>{
+       axios.delete("http://localhost:4000/product/user/"+i)
+       .then(res=>{
+
+       })
+       getAll();
+    }
+
     
     useEffect(() => {
         getAll();
@@ -39,7 +47,7 @@ const Table = () => {
             <div className="row">
                 <table className="table  table-hover table-bordered text-center table-responsive ">
                     <thead>
-                        <tr>
+                        <tr className="alert-success">
                             <th>User-ID</th>
                             <th>User-Name</th>
                             <th>Mobile.no  </th>
@@ -55,7 +63,7 @@ const Table = () => {
                         {
                             empList.map((e, index) => {
                                 return (
-                                    <tr key={index}>
+                                    <tr className="alert-dark text-secondary" key={index}>
                                         
                                         <td>
                                             {e._id} 
@@ -71,7 +79,7 @@ const Table = () => {
                                         </td>
                                         
                                         <td><Link to={`/add/${e._id}`}><button className="btn btn-success" >Add</button></Link></td>
-                                        <td><button className="btn btn-danger" >Remove</button></td>
+                                        <td><button className="btn btn-danger"   onClick={del.bind(this,e._id)}>Remove</button></td>
                                     </tr>
                                 )
                             })

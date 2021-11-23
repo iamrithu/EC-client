@@ -22,7 +22,14 @@ export default function Register() {
                 "fullName":name,
                 "mobileNumber":number,
                 "eMail":mail,
-                "password":password
+                "password":password,
+                "task": [
+                    {
+                        "taskName":"",
+                    "description":"",
+                    "duration":""
+                    }
+                    ]
             }
                 axios.post("http://localhost:4000/product/user",data)
                 .then(res=>{
@@ -46,7 +53,7 @@ export default function Register() {
         <div className="container">
             <div className="row">
                 <div className="col-lg-4"></div>
-                <div className="col-lg-4">
+                <div className="col-lg-4 m-4 p-4 alert-info">
                     
                     <p className="text-danger text-center">{msg}</p>
                     <p className="text-success text-center">{Cmsg}</p>

@@ -1,0 +1,74 @@
+import React,{useState,useEffect} from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+
+export default function Mytask() {
+
+
+    
+    const [data, process] = useState([]);
+    const [ value,Store]=useState("");
+    const [message, msgprocess] = useState("");
+  
+   
+    const getAll = () => {
+
+          axios.get("http://localhost:4000/product/users/"+localStorage.getItem("userEmail"))
+
+            .then(res => {
+                process(res.data._id)
+
+            });
+         
+            find();
+     }
+     const find = ()=>{
+      
+        axios.get("http://localhost:4000/product/store/"+data)
+        .then((res)=>{
+            Store(res.data);
+        })
+       
+
+     }
+     
+      
+
+        
+    
+     
+    
+
+    useEffect(() => {
+        
+        
+        getAll();
+    }, true)
+  
+
+    return (
+        <div className="container ">
+            
+            <div className="row">
+            {
+                            value.map((e, index) => {
+                                return (
+                                    <div className="col-lg-4 p-3  border  alert-success" key={index}>
+                                        <p>{message}</p>
+                                        
+                                      <h6 className="text-primary" >TaskName : <span className="text-success"> {e.storetask }</span></h6>
+                                      <h6 className="text-primary">Description :-</h6>
+                                      <p className="text-secondary" >{e.Sdescription}</p>
+                                      <h6 className="text-primary">Duration : <span className="text-danger" >{e.Sduration }</span></h6>
+                                      
+                                    </div>
+                                )
+                            } )
+  
+           }    
+            </div>
+                        
+        </div>
+    )
+}
+

@@ -13,6 +13,7 @@ import UserDatails from "./user/user-datails";
 import Usertask from "./task/userTask";
 import Mytask from "./task/mytask";
 import Add from "./user/addtask";
+import CompleteTask from "./task/completeTask";
 
 
 
@@ -32,9 +33,11 @@ const App = () => {
         <Route exact path="/task" element={<NewTask />} />
         <Route exact path="/newTask" element={<Task />} />
         <Route exact path="/user-details" element={<UserDatails />} />
+       
         <Route exact path="/usertask" element={<Usertask />} />
         <Route exact path="/mytask" element={<Mytask />} />
         <Route exact path="/add/:id" element={<Add />} />
+        <Route exact path="/complete-task" element={<CompleteTask />} />
         
        
       </Routes>
